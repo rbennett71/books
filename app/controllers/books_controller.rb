@@ -3,18 +3,18 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    render status: :ok
+    render   status: :ok
   end
 
   def show
-    render json: @book, status: :ok
+    render status: :ok
   end
 
   def create
     @book = Book.create(book_params)
 
     if @book.valid?
-      render json: @book, status: :created
+      render status: :created
     else
       render json: @book.errors.messages, status: :unprocessable_entity
     end
@@ -38,3 +38,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 end
+
+#@todo - Coverage on main controller actions
+# todo - Get a good exception handler in here
+#
