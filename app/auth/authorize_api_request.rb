@@ -3,7 +3,6 @@ class AuthorizeApiRequest
     @headers = headers
   end
 
-  # Service entry point - return valid user object
   def call
     {
         user: user
@@ -27,7 +26,6 @@ class AuthorizeApiRequest
 
   # decode authentication token
   def decoded_auth_token
-    a = http_auth_header
     @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
   end
 

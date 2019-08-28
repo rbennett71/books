@@ -1,7 +1,7 @@
 # spec/factories/users.rb
 FactoryBot.define do
   factory :user do
-    name { "John Doe" }
+    name { "Rob Bennett" }
     email { 'foo@bar.com' }
     password { 'foobar' }
   end

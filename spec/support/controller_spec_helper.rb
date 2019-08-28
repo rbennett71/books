@@ -1,4 +1,4 @@
-# speccontroller_spec_helper.rb
+# spec/support/controller_spec_helper.rb
 module ControllerSpecHelper
   # generate tokens from user id
   def token_generator(user_id)
