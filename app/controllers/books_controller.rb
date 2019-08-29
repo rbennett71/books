@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
+  include Orderable
   before_action :set_book, only: [:show, :update, :destroy]
 
+  has_scope :by_author, only: :index
+
   def index
-    @books = Book.all
+    @books = apply_scopes(Book).order(ordering_params(params)).all
     render   status: :ok
   end
 
@@ -31,7 +34,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:title, :isbn, :description)
+    params.permit(:title, :isbn, :description, :author_last_name)
   end
 
   def set_book
