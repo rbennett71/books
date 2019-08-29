@@ -15,7 +15,9 @@ class AuthenticateUser
 
 
   def user
+    warn "user find #{email.inspect}"
     user = User.find_by(email: email)
+    warn "post user find #{user.inspect}"
     return user if user && user.authenticate(password)
     raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)
   end
